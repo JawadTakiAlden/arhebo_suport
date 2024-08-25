@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useTranslation } from 'react-i18next';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -12,7 +13,6 @@ import {
   FormHelperText,
   InputLabel,
   OutlinedInput,
-  styled,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useMutation } from "@tanstack/react-query";
@@ -21,7 +21,8 @@ import { useSnackbar } from "notistack";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-const ReminderPopub = ({ row }) => {
+const ReminderPopup = ({ row }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const { enqueueSnackbar } = useSnackbar();
 
@@ -37,7 +38,7 @@ const ReminderPopub = ({ row }) => {
     onSuccess: () => {},
     onError: (er) => {
       if (er.response) {
-        enqueueSnackbar(er.response.data.message, {
+        enqueueSnackbar(t('notifications.error', { message: er.response.data.message }), {
           variant: "error",
         });
       }
@@ -63,20 +64,20 @@ const ReminderPopub = ({ row }) => {
         <MemoryOutlined />
       </Button>
       <Dialog fullWidth open={open} onClose={handleClose}>
-        <DialogTitle>Send Reminder</DialogTitle>
+        <DialogTitle>{t('reminderPopup.sendReminder')}</DialogTitle>
         <DialogContent>
           <DialogContentText mb={2}>
-            the owner ask to send remider
+            {t('reminderPopup.description')}
           </DialogContentText>
           <Formik
             initialValues={{
               message: "",
             }}
             validationSchema={yup.object({
-              message: yup.string().required("message is reuired"),
+              message: yup.string().required(t('reminderPopup.messageError')),
             })}
             onSubmit={async (values) => {
-              const respone = await sendReminder.mutateAsync(values);
+              await sendReminder.mutateAsync(values);
               handleClose();
             }}
           >
@@ -90,9 +91,9 @@ const ReminderPopub = ({ row }) => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <FormControl color="success" fullWidth sx={{ mb: 2 }}>
-                  <InputLabel>Message</InputLabel>
+                  <InputLabel>{t('reminderPopup.messageLabel')}</InputLabel>
                   <OutlinedInput
-                    label="Message"
+                    label={t('reminderPopup.messageLabel')}
                     multiline
                     name="message"
                     maxRows={4}
@@ -102,7 +103,7 @@ const ReminderPopub = ({ row }) => {
                     error={!!touched.message && !!errors.message}
                   />
                   {!!touched.message && !!errors.message && (
-                    <FormHelperText error>{errors.message}</FormHelperText>
+                    <FormHelperText error>{t('reminderPopup.messageError')}</FormHelperText>
                   )}
                 </FormControl>
                 <LoadingButton
@@ -111,7 +112,7 @@ const ReminderPopub = ({ row }) => {
                   variant="contained"
                   type="submit"
                 >
-                  Send
+                  {t('reminderPopup.sendButton')}
                 </LoadingButton>
               </form>
             )}
@@ -119,7 +120,7 @@ const ReminderPopub = ({ row }) => {
         </DialogContent>
         <DialogActions>
           <Button color="error" variant="outlined" onClick={handleClose}>
-            Cancel
+            {t('reminderPopup.cancelButton')}
           </Button>
         </DialogActions>
       </Dialog>
@@ -127,4 +128,4 @@ const ReminderPopub = ({ row }) => {
   );
 };
 
-export default ReminderPopub;
+export default ReminderPopup;

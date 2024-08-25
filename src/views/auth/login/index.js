@@ -2,8 +2,10 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import { Box, Typography } from '@mui/material'
 import { exporter } from '../../../assets/exporter'
+import { useTranslation } from 'react-i18next'
 
 const Login = () => {
+    const {t}= useTranslation()
   return (
    <Box
     sx={{
@@ -28,7 +30,7 @@ const Login = () => {
                 mb : 3
             }}
         >
-            Login
+            {t('Login.title')}
         </Typography>
 
         <Typography
@@ -40,7 +42,7 @@ const Login = () => {
                 mb : 3
             }}
         >
-            Support dashboard
+            {t('Login.main_title')}
         </Typography>
 
         <LoginForm />

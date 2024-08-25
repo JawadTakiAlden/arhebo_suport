@@ -13,6 +13,7 @@ import {
 import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 import useAddImageAndMessageOfInvitasion from "../../../../api/useAddImageAndMessageOfInvitasion";
+import { useTranslation } from "react-i18next";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -28,6 +29,7 @@ const VisuallyHiddenInput = styled("input")({
 
 const InvitationImage = ({ data }) => {
   const storeFile = useAddImageAndMessageOfInvitasion();
+  const { t } = useTranslation();
   const [file, setFile] = useState({
     image: "",
     message: data?.textMessage,
@@ -47,7 +49,7 @@ const InvitationImage = ({ data }) => {
     ) {
       setFile({ ...file, image: droppedFile });
     } else {
-      enqueueSnackbar("Only JPEG , JPG , PNG files are allowed.", {
+      enqueueSnackbar(t("invitationImage.allowedFiles"), {
         variant: "error",
       });
     }
@@ -62,7 +64,7 @@ const InvitationImage = ({ data }) => {
     ) {
       setFile({ ...file, image: selectedFile });
     } else {
-      enqueueSnackbar("Only JPEG , JPG , PNG files are allowed.", {
+      enqueueSnackbar(t("invitationImage.allowedFiles"), {
         variant: "error",
       });
     }
@@ -123,7 +125,7 @@ const InvitationImage = ({ data }) => {
           },
         }}
       >
-        Image Of Invitation
+        {t("invitationImage.title")}
       </Typography>{" "}
       {data?.image && (
         <Typography
@@ -142,7 +144,7 @@ const InvitationImage = ({ data }) => {
             },
           }}
         >
-          Current Image
+          {t("invitationImage.currentImage")}
         </Typography>
       )}
       <Box
@@ -156,8 +158,6 @@ const InvitationImage = ({ data }) => {
           minHeight: "300px",
           position: "relative",
           flexDirection: "column",
-          // maxWidth: "500px",
-          // mx: "auto",
           cursor: isDragging ? "copy" : "default",
           "&:hover .camera-icon-custom-class": {
             transform: "rotate(0.5turn)",
@@ -177,7 +177,7 @@ const InvitationImage = ({ data }) => {
             mb: 2,
           }}
         />
-        <Typography>Drag & Drop image here , or</Typography>
+        <Typography> {t("invitationImage.imageInput")}</Typography>
         <Button
           component="label"
           role={undefined}
@@ -185,7 +185,7 @@ const InvitationImage = ({ data }) => {
           color="success"
           variant="contained"
         >
-          Select Image From Your Device{" "}
+          {t("invitationImage.selectImage")}{" "}
           <VisuallyHiddenInput
             onChange={handleFileChange}
             accept="image/png , image/jpg , image/jpeg"
@@ -193,7 +193,7 @@ const InvitationImage = ({ data }) => {
           />
         </Button>
         {file.image && (
-          <Tooltip title={"click me to see me"}>
+          <Tooltip title={t("invitationImage.clickMeHint")}>
             <Typography
               sx={{
                 my: 2,
@@ -210,9 +210,9 @@ const InvitationImage = ({ data }) => {
         )}
       </Box>
       <FormControl color="success" fullWidth sx={{ mb: 2, mt: 2 }}>
-        <InputLabel>Message</InputLabel>
+        <InputLabel>{t("invitationImage.message")}</InputLabel>
         <OutlinedInput
-          label="Message"
+          label={t("invitationImage.message")}
           multiline
           name="message"
           maxRows={4}
@@ -234,7 +234,7 @@ const InvitationImage = ({ data }) => {
         startIcon={<SaveOutlined />}
         loadingPosition="start"
       >
-        Save
+        {t("invitationImage.save")}
       </LoadingButton>
     </Box>
   );

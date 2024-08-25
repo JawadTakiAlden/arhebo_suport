@@ -1,26 +1,15 @@
 import { Box, Tooltip, Typography, alpha, styled } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const SubText = styled("sub")(({ theme }) => ({
   color: theme.palette.success.main,
   fontFamily: "monospace",
 }));
 
-const ExtraFeatuerInfo = ({data}) => {
-  // const data = [
-  //   {
-  //     type: "withValue",
-  //     quantity: 3,
-  //     name: "Resiption to scan QR code",
-  //     description: "lorem ipsum ",
-  //   },
-  //   {
-  //     type: "withoutValue",
-  //     quantity: null,
-  //     name: "Nigh Lighs on the room",
-  //     description: "lorem ipsum ",
-  //   },
-  // ];
+const ExtraFeatuerInfo = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -64,10 +53,10 @@ const ExtraFeatuerInfo = ({data}) => {
           },
         }}
       >
-        Extra Features
+        {t('extraFeatureInfo.extraFeatures')}
       </Typography>
       {
-        data?.extraFeature?.length === 0 && <Typography>No Extra Feature Paied Yet</Typography>
+        data?.extraFeature?.length === 0 && <Typography>{t('extraFeatureInfo.noExtraFeature')}</Typography>
       }
       {data?.extraFeature.map((extraFeature, i) => (
         <Typography
@@ -80,7 +69,7 @@ const ExtraFeatuerInfo = ({data}) => {
             {extraFeature.name}
           </Tooltip>{" "}
           {extraFeature.type === "withValue" && (
-            <SubText>Qun : {extraFeature.quantity} </SubText>
+            <SubText>{t('extraFeatureInfo.quantity')}: {extraFeature.quantity} </SubText>
           )}
         </Typography>
       ))}

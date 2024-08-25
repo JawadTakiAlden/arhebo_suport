@@ -1,30 +1,21 @@
 import { Box, Tooltip, Typography, alpha } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-const MessageInfo = ({data}) => {
-    // const data = [
-    //     {
-    //         type : '2',
-    //         title : 'this is the message for update message',
-    //         created_at : '20-03-2024'
-    //     },
-    //     {
-    //         type : '1',
-    //         title : 'this is the message for delete message',
-    //         created_at : '20-03-2024'
-    //     }
-    // ]
+const MessageInfo = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
-        boxShadow : '1px 1px 10px -5px rgba(0,0,0,0.2)',
+        boxShadow: '1px 1px 10px -5px rgba(0,0,0,0.2)',
         p: 2,
         borderRadius: "4px",
         transition: "0.3s",
-        height : '100%',
+        height: '100%',
         "&:hover": {
           transform: "scale(1.02)",
-          boxShadow : '-1px -1px 15px -5px rgba(0,0,0,0.5)',
+          boxShadow: '-1px -1px 15px -5px rgba(0,0,0,0.5)',
         },
       }}
     >
@@ -42,7 +33,7 @@ const MessageInfo = ({data}) => {
             width: "110%",
             bottom: "-10px",
             height: "2px",
-            backgroundColor: (theme) =>  theme.palette.success.main,
+            backgroundColor: (theme) => theme.palette.success.main,
             left: 0,
           },
           "&::before": {
@@ -57,20 +48,20 @@ const MessageInfo = ({data}) => {
           },
         }}
       >
-        Messages
+        {t('messageInfo.messages')}
       </Typography>
-      {data?.message.length === 0 && <Typography>No Messages Sent Yet</Typography>}
+      {data?.message.length === 0 && <Typography>{t('messageInfo.noMessages')}</Typography>}
       {data?.message.map((message, i) => (
         <Typography
-        key={i}
+          key={i}
           sx={{
             mb: data.length - 1 === i ? 0 : 1,
-            backgroundColor : (theme) => alpha(+message.type === 2 ? theme.palette.warning.main : theme.palette.error.main , 0.1),
-            p : 1,
-            borderRadius : '4px',
-            transition : '0.3s',
-            "&:hover" : {
-                backgroundColor : (theme) => alpha(+message.type === 2 ? theme.palette.warning.main : theme.palette.error.main , 0.2),
+            backgroundColor: (theme) => alpha(+message.type === 2 ? theme.palette.warning.main : theme.palette.error.main, 0.1),
+            p: 1,
+            borderRadius: '4px',
+            transition: '0.3s',
+            "&:hover": {
+              backgroundColor: (theme) => alpha(+message.type === 2 ? theme.palette.warning.main : theme.palette.error.main, 0.2),
             }
           }}
         >

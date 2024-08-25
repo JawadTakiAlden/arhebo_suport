@@ -3,8 +3,10 @@ import React from "react";
 import { gridSpacing } from "../../../constant";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Customtable from "../../../layouts/CustomTable";
+import { useTranslation } from "react-i18next";
 
 const Orders = () => {
+  const {t} = useTranslation()
   return (
     <Box>
       <Box
@@ -22,7 +24,7 @@ const Orders = () => {
             textTransform: "capitalize",
           }}
         >
-          Orders
+          {t('Orders.header')}
         </Typography>
       </Box>
       <Customtable />

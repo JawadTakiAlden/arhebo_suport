@@ -1,21 +1,10 @@
 import { Box, Tooltip, Typography, alpha } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-const ProhibitedThings = ({data}) => {
-  const dumyData = [
-    {
-      id : 1,
-      name : 'Non-smoking'
-    },
-    {
-      id : 2,
-      name : 'Do not bring alcoholic beverages'
-    },
-    {
-      id : 3,
-      name : 'Do not bring children to the party'
-    },
-  ]
+const ProhibitedThings = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -23,7 +12,7 @@ const ProhibitedThings = ({data}) => {
         p: 2,
         borderRadius: "4px",
         transition: "0.3s",
-        backgroundColor : (theme) => alpha(theme.palette.error.light , 0.2),
+        backgroundColor: (theme) => alpha(theme.palette.error.light, 0.2),
         height: "100%",
         "&:hover": {
           transform: "scale(1.02)",
@@ -60,29 +49,27 @@ const ProhibitedThings = ({data}) => {
           },
         }}
       >
-        Forbidden things
+        {t('prohibitedThings.title')}
       </Typography>
-        {
-          data?.prohibitedThings.map((forbidenThing , i) => (
-            <Typography
-            key={i}
+      {data?.prohibitedThings.map((forbiddenThing, i) => (
+        <Typography
+          key={i}
           sx={{
-            mb: dumyData.length - 1 === i ? 0 : 1,
-            backgroundColor : (theme) => alpha(theme.palette.error.main , 0.1),
-            p : 1,
-            borderRadius : '4px',
-            transition : '0.3s',
-            "&:hover" : {
-                backgroundColor : (theme) => alpha(theme.palette.error.main , 0.2),
+            mb: data?.prohibitedThings.length - 1 === i ? 0 : 1,
+            backgroundColor: (theme) => alpha(theme.palette.error.main, 0.1),
+            p: 1,
+            borderRadius: '4px',
+            transition: '0.3s',
+            "&:hover": {
+              backgroundColor: (theme) => alpha(theme.palette.error.main, 0.2),
             }
           }}
         >
-          <Tooltip title={forbidenThing.created_at}>
-            {forbidenThing.name}
+          <Tooltip title={forbiddenThing.created_at}>
+            {forbiddenThing.name}
           </Tooltip>
         </Typography>
-          ))
-        }
+      ))}
     </Box>
   );
 };

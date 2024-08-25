@@ -1,26 +1,23 @@
+import React from "react";
+import { useTranslation } from 'react-i18next';
 import { Box, IconButton, Tooltip, Typography } from "@mui/material";
-import React, { useEffect, useRef } from "react";
-import useDynamicTextColorComponent from "./useDynamicTextColorComponent.js";
-import useGetTextColorBasedOnRGB from "./useGetTextColorBasedOnRGB.js";
-import pinkImage from "../../../../assets/download (1).jpeg";
 import { EastOutlined, ImageOutlined } from "@mui/icons-material";
+import pinkImage from "../../../../assets/download (1).jpeg";
 
 const PublicEventInfo = ({ data }) => {
-  // const { r, g, b } = useDynamicTextColorComponent(data?.template);
-  // const textColor = useGetTextColorBasedOnRGB([r, g, b]);
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
         borderRadius: "8px",
         transition: "0.3s",
         backdropFilter: "blur(10px)",
-        // backgroundImage: `linear-gradient(90deg , rgb(${r} , ${g} , ${b}) , rgb(${b} , ${g} , ${r}))`,
         height: "100%",
-        backgroundImage:(theme) => `linear-gradient(90deg , ${theme.palette.success.light} , ${theme.palette.success.dark})`,
+        backgroundImage: (theme) => `linear-gradient(90deg , ${theme.palette.success.light} , ${theme.palette.success.dark})`,
         position: "relative",
         overflow: "hidden",
-        // color: `rgb(${textColor[0]} , ${textColor[1]} , ${textColor[2]})`,
-        color : 'white',
+        color: 'white',
         "& *": {
           color: "inherit",
         },
@@ -34,19 +31,20 @@ const PublicEventInfo = ({ data }) => {
           height: "100%",
         }}
       >
-        <IconButton
-          sx={{
-            position: "absolute",
-            right: "10px",
-            top: "10px",
-            // color: `rgb(${textColor[0]} , ${textColor[1]} , ${textColor[2]})`,
-          }}
-          component={"a"}
-          href={data?.template}
-          target="_blank"
-        >
-          <ImageOutlined />
-        </IconButton>
+        <Tooltip title={t('publicEventInfo.openImageTooltip')}>
+          <IconButton
+            sx={{
+              position: "absolute",
+              right: "10px",
+              top: "10px",
+            }}
+            component={"a"}
+            href={data?.template}
+            target="_blank"
+          >
+            <ImageOutlined />
+          </IconButton>
+        </Tooltip>
         <Typography
           sx={{
             position: "relative",
@@ -61,7 +59,6 @@ const PublicEventInfo = ({ data }) => {
               width: "110%",
               bottom: "-10px",
               height: "2px",
-              // backgroundColor: `rgb(${textColor[0]} , ${textColor[1]} , ${textColor[2]})`,
               left: 0,
             },
             "&::before": {
@@ -71,12 +68,11 @@ const PublicEventInfo = ({ data }) => {
               bottom: "-14px",
               height: "10px",
               borderRadius: "50%",
-              // backgroundColor: `rgb(${textColor[0]} , ${textColor[1]} , ${textColor[2]})`,
               right: "calc(-10% - 5px)",
             },
           }}
         >
-          Public Event Information
+          {t('publicEventInfo.title')}
         </Typography>
         <Box
           sx={{
@@ -90,54 +86,27 @@ const PublicEventInfo = ({ data }) => {
               width: { xs: "100%", sm: "70%" },
             }}
           >
-            <Typography
-              sx={{
-                mb: 1,
-              }}
-            >
-              Inviter : {data?.inviter}
+            <Typography sx={{ mb: 1 }}>
+              {t('publicEventInfo.inviter')}: {data?.inviter}
             </Typography>
-            <Typography
-              sx={{
-                mb: 1,
-              }}
-            >
-              City : {data?.city || "Not Found"}
+            <Typography sx={{ mb: 1 }}>
+              {t('publicEventInfo.city')}: {data?.city || t('publicEventInfo.notFound')}
             </Typography>
-            {/* <Typography
-              sx={{
-                mb: 1,
-              }}
-            >
-              {data?.is_with_qr ? "With QR" : "Without QR"}
-            </Typography> */}
-            <Typography
-              sx={{
-                mb: 1,
-              }}
-            >
-              Location :
+            <Typography sx={{ mb: 1 }}>
+              {t('publicEventInfo.location')}:
               <a
                 style={{ display: "inline-block", textDecoration: "underline" }}
                 href={data?.location_link}
               >
-                Open Link
+                {t('publicEventInfo.openLink')}
               </a>
             </Typography>
-            <Typography
-              sx={{
-                mb: 1,
-              }}
-            >
-              Region : {data?.region || "Not Found"}
+            <Typography sx={{ mb: 1 }}>
+              {t('publicEventInfo.region')}: {data?.region || t('publicEventInfo.notFound')}
             </Typography>
-            {data?.invitationInput?.map((obj) => (
-              <Typography
-                sx={{
-                  mb: 1,
-                }}
-              >
-                {obj?.name} : {obj?.value || "Not Found"}
+            {data?.invitationInput?.map((obj, index) => (
+              <Typography key={index} sx={{ mb: 1 }}>
+                {t(`publicEventInfo.${obj?.name}`)}: {obj?.value || t('publicEventInfo.notFound')}
               </Typography>
             ))}
           </Box>
@@ -146,28 +115,14 @@ const PublicEventInfo = ({ data }) => {
               width: { xs: "100%", sm: "30%" },
             }}
           >
-            <Typography
-              sx={{
-                mb: 1,
-              }}
-            >
-              Islamic Date : {data?.hijri_date}
+            <Typography sx={{ mb: 1 }}>
+              {t('publicEventInfo.islamicDate')}: {data?.hijri_date}
             </Typography>
-            <Typography
-              sx={{
-                mb: 1,
-              }}
-            >
-              Gregorian Date : {data?.miladi_date}
+            <Typography sx={{ mb: 1 }}>
+              {t('publicEventInfo.gregorianDate')}: {data?.miladi_date}
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              {data?.from}&nbsp;&nbsp;&nbsp; <EastOutlined />
-              &nbsp;&nbsp;&nbsp; {data?.to}
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              {data?.from} &nbsp;&nbsp;&nbsp; <EastOutlined /> &nbsp;&nbsp;&nbsp; {data?.to}
             </Box>
           </Box>
         </Box>

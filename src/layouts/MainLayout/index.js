@@ -15,7 +15,6 @@ const MainLayout = () => {
                 py : 2
             }}
         >
-            {/* <CustomBreadcrumbs /> */}
             <Outlet />
         </Box>
     </Box>

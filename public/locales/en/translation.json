@@ -1,0 +1,112 @@
+{
+  "LanguageSwitcher": {
+    "english": "English",
+    "arabic": "Arabic"
+  },
+  "Login": {
+    "title": "Login",
+    "main_title": "Support Dashboard"
+  },
+  "LoginForm": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Login"
+  },
+  "Header": {
+    "dashboard_title": "Support Dashboard"
+  },
+  "Orders": {
+    "header": "Order"
+  },
+  "CustomTable": {
+    "client": "CLIENT",
+    "event_name": "EVENT NAME",
+    "package": "Package",
+    "number": "NUMBER NAME",
+    "status": "STATUS",
+    "active": "Active",
+    "done": "Done",
+    "deleted": "Deleted",
+    "updated": "Updated",
+    "add_guests": "Add Guests",
+    "error_loading_data" : "Error loading data"
+  },
+  "reminderPopup": {
+    "sendReminder": "Send Reminder",
+    "description": "The owner asked to send a reminder",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Type your reminder message here...",
+    "messageError": "Message is required",
+    "sendButton": "Send",
+    "cancelButton": "Cancel"
+  },
+  "publicEventInfo": {
+    "title": "Public Event Information",
+    "inviter": "Inviter",
+    "city": "City",
+    "location": "Location",
+    "openLink": "Open Link",
+    "region": "Region",
+    "islamicDate": "Islamic Date",
+    "gregorianDate": "Gregorian Date",
+    "notFound": "Not Found",
+    "openImageTooltip": "Open Image",
+    "withQR": "With QR",
+    "withoutQR": "Without QR"
+  },
+  "packageDetails": {
+    "discount": "Discount in this package",
+    "features": "Features"
+  },
+  "inviteesDetails": {
+    "statisticsTitle": "Invitee Statistics",
+    "maximumInvitees": "Maximum number of invitees",
+    "remainingInvitations": "Number of invitations available now",
+    "compensationTooltip": "Compensation for those rejected",
+    "waitingInvitations": "Number of invitations waiting",
+    "confirmedInvitations": "Number of invitations accepted",
+    "rejectedInvitations": "Number of invitations rejected"
+  },
+  "inviteesInfo": {
+    "accepted": "Accepted",
+    "waiting": "Waiting",
+    "rejected": "Rejected",
+    "totalInvites": "Total Invites",
+    "name": "Name",
+    "phone": "Phone",
+    "status": "Status",
+    "message": "Message",
+    "noInvites": "No Invites Yet"
+  },
+  "additionalPackageInfo": {
+    "packageTitle": "Additional Package",
+    "noAdditionalPackage": "No Additional Package Paid",
+    "invitees": "additional invitees"
+  },
+  "extraFeatureInfo": {
+    "extraFeatures": "Extra Features",
+    "noExtraFeature": "No Extra Feature Paid Yet",
+    "quantity": "Qun"
+  },
+  "messageInfo": {
+    "messages": "Messages",
+    "noMessages": "No Messages Sent Yet"
+  },
+  "prohibitedThings": {
+    "title": "Forbidden things"
+  },
+  "invitationImage" : {
+    "allowedFiles" : "Only JPEG , JPG , PNG files are allowed.",
+    "title" : "Image Of Invitation",
+    "currentImage" : "Current Image",
+    "imageInput" : "Drag & Drop image here , or",
+    "selectImage" : "Select Image From Your Device",
+    "clickMeHint" : "click me to see me",
+    "message" : "Message",
+    "save" : "Save"
+  },
+  "checkTemplate": {
+    "templateNumber": "Template Number",
+    "check": "Check"
+  }
+}

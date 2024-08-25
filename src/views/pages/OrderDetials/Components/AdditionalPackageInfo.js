@@ -1,29 +1,15 @@
 import { Box, Tooltip, Typography, alpha, styled } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const AdditionalPackageInfo = ({ data }) => {
-  // const data = [
-  //   {
-  //     price: 500,
-  //     number_of_invitee: 20,
-  //     created_at: "20-3-2024",
-  //   },
-  //   {
-  //     price: 250,
-  //     number_of_invitee: 10,
-  //     created_at: "20-5-2024",
-  //   },
-  //   {
-  //     price: 350,
-  //     number_of_invitee: 35,
-  //     created_at: "15-5-2024",
-  //   },
-  // ];
+  const { t } = useTranslation();
 
   const SubText = styled("sub")(({ theme }) => ({
     color: theme.palette.success.main,
     fontFamily: "monospace",
   }));
+
   return (
     <Box
       sx={{
@@ -67,10 +53,10 @@ const AdditionalPackageInfo = ({ data }) => {
           },
         }}
       >
-        Additional Package
+        {t('additionalPackageInfo.packageTitle')}
       </Typography>
       {data?.additionalPackage?.length === 0 && (
-        <Typography>Not Additional Package Paied</Typography>
+        <Typography>{t('additionalPackageInfo.noAdditionalPackage')}</Typography>
       )}
       {data?.additionalPackage.map((additional, i) => (
         <Typography
@@ -80,7 +66,7 @@ const AdditionalPackageInfo = ({ data }) => {
           }}
         >
           <Tooltip title={additional.created_at}>
-            {additional.number_of_invitees} additional invitees
+            {additional.number_of_invitees} {t('additionalPackageInfo.invitees')}
           </Tooltip>{" "}
           <SubText>{additional.price} SAR</SubText>
         </Typography>

@@ -1,0 +1,113 @@
+{
+    "LanguageSwitcher": {
+      "english": "الإنجليزية",
+      "arabic": "العربية"
+    },
+    "Login": {
+      "title": "تسجيل الدخول",
+      "main_title": "لوحة تحكم الدعم"
+    },
+    "LoginForm": {
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "login": "تسجيل الدخول"
+    },
+    "Header": {
+      "dashboard_title": "لوحة تحكم الدعم"
+    },
+    "Orders": {
+      "header": "الطلب"
+    },
+    "CustomTable": {
+      "client": "العميل",
+      "event_name": "اسم الحدث",
+      "package": "الحزمة",
+      "number": "رقم الطلب",
+      "status": "الحالة",
+      "active": "نشط",
+      "done": "منتهي",
+      "deleted": "محذوف",
+      "updated": "محدث",
+      "add_guests": "إضافة ضيوف",
+      "error_loading_data" : "خطأ في تحميل البيانات"
+    },
+    "reminderPopup": {
+      "sendReminder": "إرسال تذكير",
+      "description": "طلب المالك إرسال تذكير",
+      "messageLabel": "الرسالة",
+      "messagePlaceholder": "اكتب رسالة التذكير هنا...",
+      "messageError": "الرسالة مطلوبة",
+      "sendButton": "إرسال",
+      "cancelButton": "إلغاء"
+    },
+    "publicEventInfo": {
+      "title": "معلومات الحدث العام",
+      "inviter": "المدعو",
+      "city": "المدينة",
+      "location": "الموقع",
+      "openLink": "فتح الرابط",
+      "region": "المنطقة",
+      "islamicDate": "التاريخ الهجري",
+      "gregorianDate": "التاريخ الميلادي",
+      "notFound": "غير موجود",
+      "openImageTooltip": "فتح الصورة",
+      "withQR": "مع رمز الاستجابة السريعة",
+      "withoutQR": "بدون رمز الاستجابة السريعة"
+    },
+    "packageDetails": {
+      "discount": "التخفيض في هذه الحزمة",
+      "features": "الميزات"
+    },
+    "inviteesDetails": {
+      "statisticsTitle": "إحصائيات الدعوات",
+      "maximumInvitees": "الحد الأقصى لعدد الدعوات",
+      "remainingInvitations": "عدد الدعوات المتاحة الآن",
+      "compensationTooltip": "تعويض للمرفوضين",
+      "waitingInvitations": "عدد الدعوات في الانتظار",
+      "confirmedInvitations": "عدد الدعوات المقبولة",
+      "rejectedInvitations": "عدد الدعوات المرفوضة"
+    },
+    "inviteesInfo": {
+      "accepted": "تم القبول",
+      "waiting": "في الانتظار",
+      "rejected": "مرفوض",
+      "totalInvites": "إجمالي الدعوات",
+      "name": "الاسم",
+      "phone": "الهاتف",
+      "status": "الحالة",
+      "message": "الرسالة",
+      "noInvites": "لا توجد دعوات بعد"
+    },
+    "additionalPackageInfo": {
+      "packageTitle": "حزمة إضافية",
+      "noAdditionalPackage": "لم يتم دفع أي حزمة إضافية",
+      "invitees": "دعوات إضافية"
+    },
+    "extraFeatureInfo": {
+      "extraFeatures": "ميزات إضافية",
+      "noExtraFeature": "لم يتم دفع أي ميزة إضافية بعد",
+      "quantity": "الكمية"
+    },
+    "messageInfo": {
+      "messages": "الرسائل",
+      "noMessages": "لم يتم إرسال أي رسائل بعد"
+    },
+    "prohibitedThings": {
+      "title": "الأشياء المحظورة"
+    },
+    "invitationImage" : {
+      "allowedFiles" : "الملفات المسموح بها فقط: JPEG، JPG، PNG.",
+      "title" : "صورة الدعوة",
+      "currentImage" : "الصورة الحالية",
+      "imageInput" : "اسحب الصورة هنا، أو",
+      "selectImage" : "حدد الصورة من جهازك",
+      "clickMeHint" : "انقر هنا لرؤيتي",
+      "message" : "الرسالة",
+      "save" : "حفظ"
+    },
+    "checkTemplate": {
+      "templateNumber": "رقم القالب",
+      "check": "تحقق"
+    }
+  }
+  

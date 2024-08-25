@@ -1,58 +1,43 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
 const InviteesInfo = ({ data }) => {
+  const { t } = useTranslation();
   const [status, setStatus] = useState(1);
-  const dumyData = [
-    {
-      name: "jawad taki aldeen",
-      status: 1,
-      phone: "0948966979",
-    },
-    {
-      name: "ali aldkak",
-      status: 2,
-      phone: "0948966979",
-    },
-    {
-      name: "wesam suliman",
-      status: 3,
-      phone: "0948966979",
-    },
-  ];
+
   const statusMap = {
-    1: "Accepted",
-    2: "Watting",
-    3: "Rejected",
+    1: t("inviteesInfo.accepted"),
+    2: t("inviteesInfo.waiting"),
+    3: t("inviteesInfo.rejected"),
   };
 
   const filterButtons = [
     {
       status: 1,
-      name: "Accepted",
+      name: t("inviteesInfo.accepted"),
       color: "success",
     },
     {
       status: 2,
-      name: "Watting",
+      name: t("inviteesInfo.waiting"),
       color: "warning",
     },
     {
       status: 3,
-      name: "Rejected",
+      name: t("inviteesInfo.rejected"),
       color: "error",
     },
   ];
+
   return (
     <Box
       sx={{
         width: "100%",
-        // height: "100%",
-        maxHeight : '400px',
+        maxHeight: "400px",
         backgroundColor: (theme) => theme.palette.common.white,
         borderRadius: "8px",
         p: 3,
-        width: "100%",
         overflowX: "auto",
       }}
     >
@@ -74,7 +59,9 @@ const InviteesInfo = ({ data }) => {
             variant="contained"
             sx={{
               width: status === button.status ? "100%" : "50%",
-              filter: `grayscale(${status === button.status ? "0%" : "100%"})`,
+              filter: `grayscale(${
+                status === button.status ? "0%" : "100%"
+              })`,
               transition: "width 0.3s",
             }}
             color={button.color}
@@ -84,14 +71,9 @@ const InviteesInfo = ({ data }) => {
         ))}
       </Box>
       <Typography color={"success.dark"} my={2}>
-        Total Invittes : {data?.invited}
+        {t("inviteesInfo.totalInvites")}: {data?.invited}
       </Typography>
-      <Box
-      // sx={{
-      //   width: "100%",
-      //   overflowX: "auto",
-      // }}
-      >
+      <Box>
         <Box
           sx={{
             p: 1,
@@ -102,16 +84,16 @@ const InviteesInfo = ({ data }) => {
         >
           <Grid container spacing={1}>
             <Grid item xs={3}>
-              Name
+              {t("inviteesInfo.name")}
             </Grid>
             <Grid item xs={3}>
-              phone
+              {t("inviteesInfo.phone")}
             </Grid>
             <Grid item xs={3}>
-              Status
+              {t("inviteesInfo.status")}
             </Grid>
             <Grid item xs={3}>
-              message
+              {t("inviteesInfo.message")}
             </Grid>
           </Grid>
         </Box>
@@ -122,13 +104,14 @@ const InviteesInfo = ({ data }) => {
               color: "text.secondary",
             }}
           >
-            No Invited yet
+            {t("inviteesInfo.noInvites")}
           </Typography>
         )}
         {data?.allInvited
           .filter((invitee) => +invitee.status === status)
-          .map((invitee) => (
+          .map((invitee, index) => (
             <Box
+              key={index}
               sx={{
                 borderBottom: "1px solid #f1f1f1",
                 p: 1,

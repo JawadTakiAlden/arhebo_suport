@@ -15,35 +15,37 @@ import {
 import { useNavigate } from "react-router-dom";
 import useGetPackages from "../../api/useGetPackages";
 import ReminderPopub from "./ReminderPopub";
+import { useTranslation } from "react-i18next";
 
 const CustomTable = () => {
   const ordersData = useGetOrders();
   const navigate = useNavigate();
   const packages = useGetPackages();
+  const { t } = useTranslation();
 
   const columns = useMemo(
     () => [
       {
         accessorKey: "clint", //access nested data with dot notation
-        header: "CLIENT",
+        header: t("CustomTable.client"),
         enableColumnActions: false,
         size: 150,
       },
       {
         accessorKey: "event_name", //access nested data with dot notation
-        header: "Event Name",
+        header: t("CustomTable.event_name"),
         enableColumnActions: false,
         size: 150,
       },
       {
         accessorKey: "package",
-        header: "PACKAGE",
+        header: t("CustomTable.package"),
         enableColumnActions: false,
         size: 150,
       },
       {
         accessorKey: "number", //normal accessorKey
-        header: "NUMBER",
+        header: t("CustomTable.number"),
         enableColumnActions: false,
         size: 200,
       },
@@ -65,7 +67,7 @@ const CustomTable = () => {
       // },
       {
         accessorKey: "status",
-        header: "Status",
+        header: t("CustomTable.status"),
         filterVariant: "multi-select",
         filterSelectOptions: [
           { value: "1", label: "Active" },
@@ -76,25 +78,25 @@ const CustomTable = () => {
         Cell: ({ row }) =>
           +row.original.status === 1 ? (
             <Button color="primary" variant="contained" size="small">
-              Active
+              {t("CustomTable.active")}
             </Button>
           ) : +row.original.status === 2 ? (
             <Button color="success" variant="contained" size="small">
-              Done
+              {t("CustomTable.Done")}
             </Button>
           ) : +row.original.status === 3 ? (
             <Button color="error" variant="contained" size="small">
-              Deleted
+              {t("CustomTable.Deleted")}
             </Button>
           ) : (
             <Button color="warning" variant="contained" size="small">
-              Updated
+              {t("CustomTable.Updated")}
             </Button>
           ),
         size: 150,
       },
       {
-        header: "Actions",
+        accessorKey : 'action',
         enableColumnActions: false,
         Cell: ({ row }) => {
           const withoutNumber = row.original.attribute
@@ -125,7 +127,7 @@ const CustomTable = () => {
                   variant="outlined"
                   size="medium"
                 >
-                  Add Guests
+                  {t("CustomTable.add_guests")}
                 </Button>
               )}
 
@@ -174,7 +176,7 @@ const CustomTable = () => {
     muiToolbarAlertBannerProps: ordersData.isError
       ? {
           color: "error",
-          children: "Error loading data",
+          children: t("CustomTable.error_loading_data"),
         }
       : undefined,
     muiTableHeadRowProps: {

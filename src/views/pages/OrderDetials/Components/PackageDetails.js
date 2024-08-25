@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   List,
@@ -6,15 +7,17 @@ import {
   styled,
   ListItemText,
 } from "@mui/material";
-import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const ListItem = styled(BaseListItem)(({ theme }) => ({
   borderLeft: `1px solid ${theme.palette.success.main}`,
   borderRadius: "4px",
-  mb: 2,
+  marginBottom: theme.spacing(2),
 }));
 
 const PackageDetails = ({ data }) => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -22,10 +25,9 @@ const PackageDetails = ({ data }) => {
         height: "100%",
         boxShadow: "1px 1px 10px -5px rgba(0,0,0,0.4)",
         borderRadius: "12px",
-        p: 2,
+        padding: 2,
       }}
     >
-      
       <Typography
         color={"success.main"}
         sx={{
@@ -35,13 +37,11 @@ const PackageDetails = ({ data }) => {
       >
         {data?.packageName}
       </Typography>
-      <Typography
-        mb={2} mt={2}
-      >
-        Discount In this Package is : {data?.discount}%
+      <Typography mb={2} mt={2}>
+        {t('packageDetails.discount')}: {data?.discount}%
       </Typography>
-      <List subheader="Featuer">
-        {data?.packageDescription.split('\n').map((description , i) => (
+      <List subheader={<Typography>{t('packageDetails.features')}</Typography>}>
+        {data?.packageDescription.split('\n').map((description, i) => (
           <ListItem key={i}>
             <ListItemText>{description}</ListItemText>
           </ListItem>

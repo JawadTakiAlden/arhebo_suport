@@ -2,8 +2,11 @@ import { Box, Typography } from '@mui/material'
 import React from 'react'
 import NavItem from '../NavItem/NavItem'
 import ProfileSection from '../ProfileSection/ProfileSection'
+import LanguageSwitcher from '../../../ui-components/Language'
+import { useTranslation } from 'react-i18next'
 
 const Header = () => {
+    const {t} = useTranslation()
   return (
     <Box
         sx={{
@@ -20,14 +23,14 @@ const Header = () => {
         <Typography
             sx={{
                 fontSize: '20px',
-                fontWeight : '600',
-                
+                fontWeight : '600',  
             }}
         >
-            Support Dashboard
+         {t('Header.dashboard_title')}
         </Typography>
 
         <NavItem />
+        <LanguageSwitcher />
         <ProfileSection />
     </Box>
   )
