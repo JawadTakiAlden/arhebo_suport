@@ -5,7 +5,7 @@ import { EastOutlined, ImageOutlined } from "@mui/icons-material";
 import pinkImage from "../../../../assets/download (1).jpeg";
 
 const PublicEventInfo = ({ data }) => {
-  const { t } = useTranslation();
+  const { t ,  i18n} = useTranslation();
 
   return (
     <Box
@@ -106,7 +106,7 @@ const PublicEventInfo = ({ data }) => {
             </Typography>
             {data?.invitationInput?.map((obj, index) => (
               <Typography key={index} sx={{ mb: 1 }}>
-                {t(`publicEventInfo.${obj?.name}`)}: {obj?.value || t('publicEventInfo.notFound')}
+                {i18n.language === 'ar' ? obj.name_ar : obj.name} : {obj?.value}
               </Typography>
             ))}
           </Box>
