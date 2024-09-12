@@ -1,7 +1,5 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import { gridSpacing } from "../../../constant";
-import SearchBar from "./components/SearchBar/SearchBar";
 import Customtable from "../../../layouts/CustomTable";
 import { useTranslation } from "react-i18next";
 

@@ -166,30 +166,6 @@ const OrderDetials = () => {
           </Grid>
         )}
       </Grid>
-      {/*       
-<IconButton onClick={() => naviagte(-1)}>
-            <ArrowBack />
-        </IconButton>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          sx={{
-            maxWidth: "500px",
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent : 'center'
-          }}
-        >
-          <Box>
-            <img src={exporter.invitationOne} alt="invitation" style={{maxWidth : '100%'}} />
-          </Box>
-        </Box>
-      </Box>
-      <InvitaionDetials data={orderInforamtion?.data?.data} /> */}
     </Box>
   );
 };

@@ -3,36 +3,31 @@ import {
   MaterialReactTable,
   useMaterialReactTable,
 } from "material-react-table";
-import { Box, Button, Fab, Grid, IconButton, Tooltip } from "@mui/material";
+import { Box, Button, Tooltip } from "@mui/material";
 import useGetOrders from "../../api/useGetOrders";
 import {
   Add,
   CallOutlined,
-  CheckOutlined,
-  ErrorOutlined,
   RemoveRedEyeOutlined,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import useGetPackages from "../../api/useGetPackages";
-import ReminderPopub from "./ReminderPopub";
 import { useTranslation } from "react-i18next";
 
 const CustomTable = () => {
   const ordersData = useGetOrders();
   const navigate = useNavigate();
-  const packages = useGetPackages();
   const { t } = useTranslation();
 
   const columns = useMemo(
     () => [
       {
-        accessorKey: "clint", //access nested data with dot notation
+        accessorKey: "clint", 
         header: t("CustomTable.client"),
         enableColumnActions: false,
         size: 150,
       },
       {
-        accessorKey: "event_name", //access nested data with dot notation
+        accessorKey: "event_name",
         header: t("CustomTable.event_name"),
         enableColumnActions: false,
         size: 150,
@@ -44,27 +39,11 @@ const CustomTable = () => {
         size: 150,
       },
       {
-        accessorKey: "number", //normal accessorKey
+        accessorKey: "number",
         header: t("CustomTable.number"),
         enableColumnActions: false,
         size: 200,
       },
-      // {
-      //   header: "QR code",
-      //   accessorFn: (originalRow) => (originalRow.qrcode ? true : false),
-      //   filterVariant: "checkbox",
-      //   enableColumnActions: false,
-      //   Cell: ({ row }) =>
-      //     row.original.qrcode ? (
-      //       <Fab color="success" size="small">
-      //         <CheckOutlined />
-      //       </Fab>
-      //     ) : (
-      //       <Fab color="error" size="small">
-      //         <ErrorOutlined />
-      //       </Fab>
-      //     ),
-      // },
       {
         accessorKey: "status",
         header: t("CustomTable.status"),
@@ -116,8 +95,7 @@ const CustomTable = () => {
                   <CallOutlined />
                 </Button>
               </Tooltip>
-
-              {!withoutNumber && (
+              {withoutNumber && (
                 <Button
                   startIcon={<Add />}
                   onClick={() =>
@@ -130,7 +108,6 @@ const CustomTable = () => {
                   {t("CustomTable.add_guests")}
                 </Button>
               )}
-
               <Button
                 variant="outlined"
                 onClick={() =>
@@ -141,9 +118,6 @@ const CustomTable = () => {
               >
                 <RemoveRedEyeOutlined />
               </Button>
-              {row.original.withReminder && (
-                <ReminderPopub row={row.original} />
-              )}
             </Box>
           );
         },
