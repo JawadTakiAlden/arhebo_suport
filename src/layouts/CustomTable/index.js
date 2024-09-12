@@ -6,7 +6,6 @@ import {
 import { Box, Button, Tooltip } from "@mui/material";
 import useGetOrders from "../../api/useGetOrders";
 import {
-  Add,
   CallOutlined,
   RemoveRedEyeOutlined,
 } from "@mui/icons-material";
@@ -78,9 +77,6 @@ const CustomTable = () => {
         accessorKey : 'action',
         enableColumnActions: false,
         Cell: ({ row }) => {
-          const withoutNumber = row.original.attribute
-            ?.map((obj) => obj.key)
-            .includes("withoutNumber");
           return (
             <Box
               sx={{
@@ -95,19 +91,6 @@ const CustomTable = () => {
                   <CallOutlined />
                 </Button>
               </Tooltip>
-              {withoutNumber && (
-                <Button
-                  startIcon={<Add />}
-                  onClick={() =>
-                    navigate(`/dashboard/orders/add-guests/${row.original.id}`)
-                  }
-                  color="inherit"
-                  variant="outlined"
-                  size="medium"
-                >
-                  {t("CustomTable.add_guests")}
-                </Button>
-              )}
               <Button
                 variant="outlined"
                 onClick={() =>

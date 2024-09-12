@@ -1,4 +1,11 @@
-import { Box, Grid, Skeleton, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Skeleton,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import React from "react";
 import useShowOrder from "../../../api/useShowOrder";
 import { gridSpacing } from "../../../constant";
@@ -12,6 +19,8 @@ import MessageInfo from "./Components/MessageInfo";
 import ProhibitedThings from "./Components/ProhibitedThings";
 import PublicEventInfo from "./Components/PublicEventInfo";
 import InvitationImage from "./Components/InvitationImage";
+import { Add } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 const SkeltonLoader = () => {
   return (
@@ -96,12 +105,20 @@ const SkeltonLoader = () => {
 const OrderDetials = () => {
   const orderInforamtion = useShowOrder();
   const theme = useTheme();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   if (orderInforamtion.isLoading) {
     return <SkeltonLoader />;
   }
   const withCustom = orderInforamtion?.data?.data?.attribute
     ?.map((obj) => obj.key)
     .includes("withCustom");
+
+  const withoutNumber = orderInforamtion?.data?.data?.attribute
+    ?.map((obj) => obj.key)
+    .includes("withoutNumber");
+
+  console.log(orderInforamtion);
   return (
     <Box>
       <Typography
@@ -160,6 +177,24 @@ const OrderDetials = () => {
         <Grid item xs={12} md={4}>
           <ProhibitedThings data={orderInforamtion?.data?.data} />
         </Grid>
+
+        {withoutNumber && (
+          <Grid item xs={12}>
+            <Button
+              startIcon={<Add />}
+              onClick={() =>
+                navigate(
+                  `/dashboard/orders/add-guests/${orderInforamtion?.data?.data?.id}`
+                )
+              }
+              color="success"
+              variant="contained"
+              size="medium"
+            >
+              {t("CustomTable.add_guests")}
+            </Button>
+          </Grid>
+        )}
         {withCustom && (
           <Grid item xs={12}>
             <InvitationImage data={orderInforamtion?.data?.data} />
