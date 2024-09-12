@@ -19,6 +19,9 @@ const LanguageSwitcher = ({ fontcolor = "#222" }) => {
       color="success"
       fontcolor={fontcolor}
       value={i18n.language}
+      sx={{
+        color : '#fff'
+      }}
       onChange={(e) => {
         document.dir = i18n.language === "ar" ? "ltr" : "rtl";
         i18n.changeLanguage(e.target.value);

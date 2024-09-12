@@ -1,7 +1,6 @@
 import { Login, Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Box,
-  Button,
   FormControl,
   FormHelperText,
   IconButton,
@@ -15,9 +14,9 @@ import React from "react";
 import * as yup from "yup";
 import { request } from "../../../api/request";
 import { LoadingButton } from "@mui/lab";
-// import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSnackbar } from "notistack";
 const loginUserIn = (values) => {
   return request({
     url: "/login",
@@ -28,20 +27,23 @@ const loginUserIn = (values) => {
 const LoginForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const { t } = useTranslation();
-  // const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const loginMutation = useMutation({
     mutationFn: loginUserIn,
     mutationKey: ["login-user"],
     onSuccess: (data) => {
-      localStorage.setItem("arhebo-token", data.data.access_token);
-      localStorage.setItem(
-        "arhebo-admin-profile",
-        JSON.stringify(data.data.user)
-      );
-      // enqueueSnackbar(data.data.message , {variant : 'success'})
-      navigate("/dashboard/orders");
+      if(data?.data?.user.type === 3){
+        localStorage.setItem("arhebo-token", data.data.access_token);
+        localStorage.setItem(
+          "arhebo-admin-profile",
+          JSON.stringify(data.data.user)
+        );
+        navigate("/dashboard/orders");
+      }else{
+        enqueueSnackbar("permission denide , you'r account is not authorized to log in" , {variant : 'error'})
+      }
     },
     onError: (error) => {
       if (error.response) {
@@ -54,7 +56,6 @@ const LoginForm = () => {
     event.preventDefault();
   };
   const LoginUserIn = (values) => {
-    console.log(values);
     loginMutation.mutate(values);
   };
   return (

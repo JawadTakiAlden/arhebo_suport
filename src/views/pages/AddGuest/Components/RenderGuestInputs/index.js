@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   FormControl,
-  FormHelperText,
   InputLabel,
   OutlinedInput,
   Typography,
@@ -21,7 +20,7 @@ import * as yup from "yup";
 const RenderGuestInputs = () => {
   const gustes = useSelector((state) => state.guests);
   const dispatch = useDispatch();
-  const [mode , setMode] = useState('add')
+  const [mode , ] = useState('add')
   const [isDragging, setIsDragging] = useState(false);
   const addNewGuest = (values) => {
     dispatch(Add_Guest(values))
@@ -179,7 +178,6 @@ const RenderGuestInputs = () => {
             setIsDragging(false);
           }}
           onDoubleClick={() => {
-            console.log(guest)
             dispatch(Set_Initial_State(guest))
           }}
           key={guest.id}

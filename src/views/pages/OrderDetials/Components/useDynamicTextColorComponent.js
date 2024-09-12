@@ -36,7 +36,6 @@ const useDynamicTextColorComponent = (imageUrl) => {
         try {
           data = context.getImageData(0, 0, width, height);
         } catch (e) {
-          console.log(e);
           setAverageColor(defaultRGB);
           return;
         }

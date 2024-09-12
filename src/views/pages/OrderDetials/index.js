@@ -118,7 +118,6 @@ const OrderDetials = () => {
     ?.map((obj) => obj.key)
     .includes("withoutNumber");
 
-  console.log(orderInforamtion);
   return (
     <Box>
       <Typography
