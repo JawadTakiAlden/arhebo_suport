@@ -60,15 +60,15 @@ const CustomTable = () => {
             </Button>
           ) : +row.original.status === 2 ? (
             <Button color="success" variant="contained" size="small">
-              {t("CustomTable.Done")}
+              {t("CustomTable.done")}
             </Button>
           ) : +row.original.status === 3 ? (
             <Button color="error" variant="contained" size="small">
-              {t("CustomTable.Deleted")}
+              {t("CustomTable.deleted")}
             </Button>
           ) : (
             <Button color="warning" variant="contained" size="small">
-              {t("CustomTable.Updated")}
+              {t("CustomTable.updated")}
             </Button>
           ),
         size: 150,

@@ -7,6 +7,7 @@ const initialState = {
     number: "",
     count: 1,
     message: "",
+    nickname: "",
   },
   save: true,
 };
@@ -15,6 +16,9 @@ const GuestSlice = createSlice({
   name: "guests",
   initialState,
   reducers: {
+    SET_GUESTS: (state, action) => {
+      state.guests = action.payload;
+    },
     Add_Guest: (state, action) => {
       const maxId = Math.max(...state.guests.map((guest) => guest.id), 0);
       state.guests.push({
@@ -42,8 +46,8 @@ const GuestSlice = createSlice({
       )[0];
       requestedObject.count = action.payload.count;
     },
-    Set_Initial_State : (state , action) => {
-      state.initialState = action.payload
+    Set_Initial_State: (state, action) => {
+      state.initialState = action.payload;
     },
     Save_Guest: (state) => {
       state.save = true;
@@ -65,5 +69,6 @@ export const {
   Update_Guest_Count,
   Save_Guest,
   Delete_Guest,
-  Set_Initial_State
+  Set_Initial_State,
+  SET_GUESTS,
 } = GuestSlice.actions;

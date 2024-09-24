@@ -21,6 +21,7 @@ import PublicEventInfo from "./Components/PublicEventInfo";
 import InvitationImage from "./Components/InvitationImage";
 import { Add } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+import PreAddedGuests from "../AddGuest/Components/PreAddedGuests";
 
 const SkeltonLoader = () => {
   return (
@@ -199,7 +200,13 @@ const OrderDetials = () => {
             <InvitationImage data={orderInforamtion?.data?.data} />
           </Grid>
         )}
+        {withCustom && (
+          <Grid item xs={12}>
+            <PreAddedGuests maxNumberCanInvitee={orderInforamtion?.data?.data?.remaining} />
+          </Grid>
+        )}
       </Grid>
+      
     </Box>
   );
 };

@@ -2,10 +2,11 @@ import { SendOutlined } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { request } from "../../../../../api/request";
 import { useSnackbar } from "notistack";
 import { useNavigate, useParams } from "react-router-dom";
+import { SET_GUESTS } from "../../../../../store/GuestsSlice";
 
 const sendInvitaion = (options) => {
   const seenPhones = new Set();
@@ -33,21 +34,24 @@ const SendInvitationButton = () => {
   const { order } = useParams();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useDispatch()
   const sendInvetation = useMutation({
     mutationFn: sendInvitaion,
     mutationKey: ["send-invitation"],
     onSuccess: (data) => {
-      // enqueueSnackbar("guests added successfully to order" , {variant : 'success'})
+      enqueueSnackbar("guests added successfully to order" , {variant : 'success'})
+      dispatch(SET_GUESTS([]))
       navigate(`/dashboard/orders/show-order/${order}`);
     },
     onError: (error) => {
-      // enqueueSnackbar("something wrong hapend while we add your guests" , {variant : 'error'})
+      enqueueSnackbar("something wrong hapend while we add your guests" , {variant : 'error'})
     },
   });
   return (
     <Button
-      onClick={() => sendInvetation.mutate({ guests, order })}
-      d
+      onClick={() => {
+        sendInvetation.mutate({ guests, order })}
+      }
       startIcon={<SendOutlined />}
       disabled={!save || sendInvetation.isPending}
       fullWidth
