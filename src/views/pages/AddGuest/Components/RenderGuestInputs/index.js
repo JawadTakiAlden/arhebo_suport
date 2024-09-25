@@ -16,7 +16,11 @@ import {
   SET_GUESTS,
   Set_Initial_State,
 } from "../../../../../store/GuestsSlice";
-import { DeleteOutlined, HourglassBottom, HourglassTop } from "@mui/icons-material";
+import {
+  DeleteOutlined,
+  HourglassBottom,
+  HourglassTop,
+} from "@mui/icons-material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useGetNickName from "../../../../../api/useGetNickName";
@@ -27,7 +31,9 @@ const RenderGuestInputs = () => {
   const gustes = useSelector((state) => state.guests);
   const dispatch = useDispatch();
   const orderDetails = useShowOrder();
-  const [remaining , setRemaining] = useState(orderDetails?.data?.data?.remaining)
+  const [remaining, setRemaining] = useState(
+    orderDetails?.data?.data?.remaining
+  );
   const [mode] = useState("add");
   const nicknames = useGetNickName();
   const [isDragging, setIsDragging] = useState(false);
@@ -37,7 +43,7 @@ const RenderGuestInputs = () => {
   if (orderDetails.isLoading) {
     return <Typography>Loading ...</Typography>;
   }
-  console.log(orderDetails?.data?.data)
+  console.log(orderDetails?.data?.data);
   return (
     <>
       <Box
@@ -45,8 +51,8 @@ const RenderGuestInputs = () => {
           display: "flex",
           alignItems: "stretch",
           gap: "20px",
-          flexWrap : 'wrap',
-          mt : 2
+          flexWrap: "wrap",
+          mt: 2,
         }}
       >
         <Box
@@ -54,13 +60,13 @@ const RenderGuestInputs = () => {
             width: { xs: "100%", sm: "calc(50% - 20px)" },
             display: "flex",
             alignItems: "center",
-            boxShadow : "1px 1px 15px -5px #00000044",
-            p : 4,
-            borderRadius : '20px'
+            boxShadow: "1px 1px 15px -5px #00000044",
+            p: 4,
+            borderRadius: "20px",
           }}
         >
           <HourglassTop
-          color="primary"
+            color="primary"
             sx={{
               fontSize: "50px",
             }}
@@ -75,13 +81,13 @@ const RenderGuestInputs = () => {
             width: { xs: "100%", sm: "calc(50% - 20px)" },
             display: "flex",
             alignItems: "center",
-            boxShadow : "1px 1px 15px -5px #00000044",
-            p : 4,
-            borderRadius : '20px'
+            boxShadow: "1px 1px 15px -5px #00000044",
+            p: 4,
+            borderRadius: "20px",
           }}
         >
           <HourglassBottom
-          color="warning"
+            color="warning"
             sx={{
               fontSize: "50px",
             }}
@@ -95,9 +101,11 @@ const RenderGuestInputs = () => {
       <Box
         onDrop={(ev) => {
           ev.preventDefault();
-          let dragbleElement = JSON.parse(ev.dataTransfer.getData("dragbleElement"));
+          let dragbleElement = JSON.parse(
+            ev.dataTransfer.getData("dragbleElement")
+          );
           dispatch(Delete_Guest({ id: dragbleElement.id }));
-          setRemaining(prev => prev + dragbleElement.count)
+          setRemaining((prev) => prev + dragbleElement.count);
           setIsDragging(false);
         }}
         onDragOver={(e) => {
@@ -140,7 +148,7 @@ const RenderGuestInputs = () => {
         onSubmit={(values, { resetForm }) => {
           if (mode === "add") {
             addNewGuest(values);
-            setRemaining(prev => prev-values.count)
+            setRemaining((prev) => prev - values.count);
             resetForm();
             dispatch(
               Set_Initial_State({
