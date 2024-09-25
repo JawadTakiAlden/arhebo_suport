@@ -1,4 +1,5 @@
 {
+  "logout": "Logout",
   "LanguageSwitcher": {
     "english": "English",
     "arabic": "Arabic"
@@ -29,7 +30,7 @@
     "deleted": "Deleted",
     "updated": "Updated",
     "add_guests": "Add Guests",
-    "error_loading_data" : "Error loading data"
+    "error_loading_data": "Error loading data"
   },
   "reminderPopup": {
     "sendReminder": "Send Reminder",
@@ -95,17 +96,19 @@
   "prohibitedThings": {
     "title": "Forbidden things"
   },
-  "invitationImage" : {
-    "allowedFiles" : "Only JPEG , JPG , PNG files are allowed.",
-    "title" : "Image Of Invitation",
-    "currentImage" : "Current Image",
-    "imageInput" : "Drag & Drop image here , or",
-    "selectImage" : "Select Image From Your Device",
-    "clickMeHint" : "click me to see me",
-    "message" : "Message",
-    "save" : "Save"
+  "invitationImage": {
+    "allowedFiles": "Only JPEG , JPG , PNG files are allowed.",
+    "title": "Image Of Invitation",
+    "currentImage": "Current Image",
+    "imageInput": "Drag & Drop image here , or",
+    "selectImage": "Select Image From Your Device",
+    "clickMeHint": "click me to see me",
+    "message": "Message",
+    "save": "Save"
   },
   "checkTemplate": {
+    "templateSearchPrompt": "Enter the 6-digit code in the field below and click 'Check' to find the template in the Ar7ebo system.",
+    "templateSearchResult": "Simply enter the unique 6-digit code to search for the template, and you'll see the result instantly.",
     "templateNumber": "Template Number",
     "check": "Check"
   }

@@ -1,11 +1,12 @@
 
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, MenuItem, Typography } from '@mui/material'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { menuitems } from '../../../menu-items'
+import { useGetMenuItem } from '../../../menu-items'
 
 const NavItem = () => {
     const location = useLocation()
+    const menuItem = useGetMenuItem()
   return (
     <Box
         sx={{
@@ -14,7 +15,7 @@ const NavItem = () => {
         }}
     >
         {
-            menuitems.map((item , i)=> {
+            menuItem.map((item , i)=> {
                 return<Typography  sx={{textTransform : 'capitalize',
                 textDecoration : 'none',
                 color : 'white',

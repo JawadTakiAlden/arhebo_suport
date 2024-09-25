@@ -5,24 +5,24 @@ import {
 } from "material-react-table";
 import { Box, Button, Tooltip } from "@mui/material";
 import useGetOrders from "../../api/useGetOrders";
-import {
-  CallOutlined,
-  RemoveRedEyeOutlined,
-} from "@mui/icons-material";
+import { CallOutlined, RemoveRedEyeOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { MRT_Localization_AR } from "material-react-table/locales/ar";
+import { MRT_Localization_EN } from "material-react-table/locales/en";
 
 const CustomTable = () => {
   const ordersData = useGetOrders();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const columns = useMemo(
     () => [
       {
-        accessorKey: "clint", 
+        accessorKey: "clint",
         header: t("CustomTable.client"),
         enableColumnActions: false,
+        align : 'center',
         size: 150,
       },
       {
@@ -74,7 +74,7 @@ const CustomTable = () => {
         size: 150,
       },
       {
-        accessorKey : 'action',
+        accessorKey: "action",
         enableColumnActions: false,
         Cell: ({ row }) => {
           return (
@@ -109,13 +109,15 @@ const CustomTable = () => {
     []
   );
   const table = useMaterialReactTable({
-    columns,
+    columns : columns,
     data: ordersData?.data?.data || [],
     enableHiding: false,
     enableDensityToggle: false,
     enableFullScreenToggle: false,
     enableSorting: false,
     paginationDisplayMode: "pages",
+    localization:
+      i18n.language === "ar" ? MRT_Localization_AR : MRT_Localization_EN,
     muiTableContainerProps: {
       sx: {
         maxWidth: "100%",

@@ -30,21 +30,27 @@ const Header = () => {
       >
         {t("Header.dashboard_title")}
       </Typography>
-
       <NavItem />
-      <LanguageSwitcher />
-      <ProfileSection />
-      <Button
-        onClick={() => {
-          navigate("/");
-          localStorage.removeItem("arhebo-token");
-          localStorage.removeItem("arhebo-admin-profile");
+      <Box
+        sx={{
+          display : 'flex',
+          alignItems :'center',
+          gap : '10px',
         }}
-        color="error"
-        variant="contained"
       >
-        Logout
-      </Button>
+        <LanguageSwitcher />
+        <Button
+          onClick={() => {
+            navigate("/");
+            localStorage.removeItem("arhebo-token");
+            localStorage.removeItem("arhebo-admin-profile");
+          }}
+          color="error"
+          variant="contained"
+        >
+          {t("logout")}
+        </Button>
+      </Box>
     </Box>
   );
 };

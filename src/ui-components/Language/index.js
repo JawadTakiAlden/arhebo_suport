@@ -20,7 +20,8 @@ const LanguageSwitcher = ({ fontcolor = "#222" }) => {
       fontcolor={fontcolor}
       value={i18n.language}
       sx={{
-        color : '#fff'
+        color : '#fff',
+        height : '40px'
       }}
       onChange={(e) => {
         document.dir = i18n.language === "ar" ? "ltr" : "rtl";
