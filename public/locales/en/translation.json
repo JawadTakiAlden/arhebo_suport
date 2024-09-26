@@ -42,16 +42,17 @@
     "cancelButton": "Cancel"
   },
   "publicEventInfo": {
-    "title": "Public Event Information",
+    "title": "Invitation Information",
     "inviter": "Inviter",
-    "city": "City",
+    "city": "Country",
     "location": "Location",
     "openLink": "Open Link",
-    "region": "Region",
+    "region": "City",
+    "detailed_location" : "Location Details",
     "islamicDate": "Islamic Date",
     "gregorianDate": "Gregorian Date",
     "notFound": "Not Found",
-    "openImageTooltip": "Open Image",
+    "openImageTooltip": "Display the selected invitation image",
     "withQR": "With QR",
     "withoutQR": "Without QR"
   },
@@ -111,5 +112,9 @@
     "templateSearchResult": "Simply enter the unique 6-digit code to search for the template, and you'll see the result instantly.",
     "templateNumber": "Template Number",
     "check": "Check"
-  }
+  },
+  "cta" : "CTA",
+  "suuport_guest_note" : "To proceed with adding guests, please upload the template image after completing the design for this event.",
+  "from" : "From",
+  "to" : "To"
 }

@@ -5,7 +5,10 @@ import {
 } from "material-react-table";
 import { Box, Button, Tooltip } from "@mui/material";
 import useGetOrders from "../../api/useGetOrders";
-import { CallOutlined, RemoveRedEyeOutlined } from "@mui/icons-material";
+import {
+  RemoveRedEyeOutlined,
+  WhatsApp,
+} from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { MRT_Localization_AR } from "material-react-table/locales/ar";
@@ -22,31 +25,76 @@ const CustomTable = () => {
         accessorKey: "clint",
         header: t("CustomTable.client"),
         enableColumnActions: false,
-        align : 'center',
+        align: "center",
         size: 150,
+        muiTableHeadCellProps: {
+          align: "center",
+        },
+        muiTableBodyCellProps: {
+          align: "center",
+        },
+        muiTableFooterCellProps: {
+          align: "center",
+        },
       },
       {
         accessorKey: "event_name",
         header: t("CustomTable.event_name"),
         enableColumnActions: false,
         size: 150,
+        muiTableHeadCellProps: {
+          align: "center",
+        },
+        muiTableBodyCellProps: {
+          align: "center",
+        },
+        muiTableFooterCellProps: {
+          align: "center",
+        },
       },
       {
-        accessorKey: "package",
+        accessorKey: "package." + i18n.language,
         header: t("CustomTable.package"),
         enableColumnActions: false,
         size: 150,
+        muiTableHeadCellProps: {
+          align: "center",
+        },
+        muiTableBodyCellProps: {
+          align: "center",
+        },
+        muiTableFooterCellProps: {
+          align: "center",
+        },
       },
       {
         accessorKey: "number",
         header: t("CustomTable.number"),
         enableColumnActions: false,
         size: 200,
+        muiTableHeadCellProps: {
+          align: "center",
+        },
+        muiTableBodyCellProps: {
+          align: "center",
+        },
+        muiTableFooterCellProps: {
+          align: "center",
+        },
       },
       {
         accessorKey: "status",
         header: t("CustomTable.status"),
         filterVariant: "multi-select",
+        muiTableHeadCellProps: {
+          align: "center",
+        },
+        muiTableBodyCellProps: {
+          align: "center",
+        },
+        muiTableFooterCellProps: {
+          align: "center",
+        },
         filterSelectOptions: [
           { value: "1", label: "Active" },
           { value: "2", label: "Done" },
@@ -76,6 +124,16 @@ const CustomTable = () => {
       {
         accessorKey: "action",
         enableColumnActions: false,
+        muiTableHeadCellProps: {
+          align: "center",
+        },
+        muiTableBodyCellProps: {
+          align: "center",
+        },
+        muiTableFooterCellProps: {
+          align: "center",
+        },
+        header: t("cta"),
         Cell: ({ row }) => {
           return (
             <Box
@@ -87,8 +145,15 @@ const CustomTable = () => {
               }}
             >
               <Tooltip title={row.original.action}>
-                <Button variant="outlined" color="inherit" size="medium">
-                  <CallOutlined />
+                <Button
+                  component={"a"}
+                  href={`https://wa.me/${row.original.action}`}
+                  variant="outlined"
+                  color="success"
+                  size="medium"
+                  target="_blank"
+                >
+                  <WhatsApp />
                 </Button>
               </Tooltip>
               <Button
@@ -109,13 +174,14 @@ const CustomTable = () => {
     []
   );
   const table = useMaterialReactTable({
-    columns : columns,
+    columns: columns,
     data: ordersData?.data?.data || [],
     enableHiding: false,
     enableDensityToggle: false,
     enableFullScreenToggle: false,
     enableSorting: false,
     paginationDisplayMode: "pages",
+
     localization:
       i18n.language === "ar" ? MRT_Localization_AR : MRT_Localization_EN,
     muiTableContainerProps: {

@@ -13,12 +13,16 @@ const useGetTemplateByNumber = () => {
   const query = useMutation({
     mutationFn: getTemplateByCode,
     mutationKey: [`get-template-by-code`],
+    onSuccess: (data) => {
+      enqueueSnackbar("we find your template successfully", {
+        variant: "success",
+      });
+    },
     onError: (error) => {
       enqueueSnackbar("this template not found", {
         variant: "error",
       });
     },
-    onSuccess: (data) => {},
   });
 
   const callMutation = (code) => {

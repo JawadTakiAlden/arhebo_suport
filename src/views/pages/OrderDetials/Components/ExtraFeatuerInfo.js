@@ -1,4 +1,4 @@
-import { Box, Tooltip, Typography, alpha, styled } from "@mui/material";
+import { Box, Tooltip, Typography, styled } from "@mui/material";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
@@ -53,11 +53,11 @@ const ExtraFeatuerInfo = ({ data }) => {
           },
         }}
       >
-        {t('extraFeatureInfo.extraFeatures')}
+        {t("extraFeatureInfo.extraFeatures")}
       </Typography>
-      {
-        data?.extraFeature?.length === 0 && <Typography>{t('extraFeatureInfo.noExtraFeature')}</Typography>
-      }
+      {data?.extraFeature?.length === 0 && (
+        <Typography>{t("extraFeatureInfo.noExtraFeature")}</Typography>
+      )}
       {data?.extraFeature.map((extraFeature, i) => (
         <Typography
           key={i}
@@ -68,9 +68,9 @@ const ExtraFeatuerInfo = ({ data }) => {
           <Tooltip title={extraFeature.description}>
             {extraFeature.name}
           </Tooltip>{" "}
-          {extraFeature.type === "withValue" && (
-            <SubText>{t('extraFeatureInfo.quantity')}: {extraFeature.quantity} </SubText>
-          )}
+          <SubText>
+            {t("extraFeatureInfo.quantity")}: {extraFeature.quantity}{" "}
+          </SubText>
         </Typography>
       ))}
     </Box>

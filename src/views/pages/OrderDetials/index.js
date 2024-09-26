@@ -156,6 +156,11 @@ const OrderDetials = () => {
         <Grid item xs={12}>
           <PublicEventInfo data={orderInforamtion?.data?.data} />
         </Grid>
+        {withCustom && (
+          <Grid item xs={12}>
+            <InvitationImage data={orderInforamtion?.data?.data} />
+          </Grid>
+        )}
         <Grid item xs={12} sm={6} md={9}>
           <PackageDetails data={orderInforamtion?.data?.data} />
         </Grid>
@@ -178,7 +183,7 @@ const OrderDetials = () => {
           <ProhibitedThings data={orderInforamtion?.data?.data} />
         </Grid>
 
-        {withoutNumber && (
+        {withoutNumber && orderInforamtion?.data?.data?.image && (
           <Grid item xs={12}>
             <Button
               startIcon={<Add />}
@@ -197,16 +202,12 @@ const OrderDetials = () => {
         )}
         {withCustom && (
           <Grid item xs={12}>
-            <InvitationImage data={orderInforamtion?.data?.data} />
-          </Grid>
-        )}
-        {withCustom && (
-          <Grid item xs={12}>
-            <PreAddedGuests maxNumberCanInvitee={orderInforamtion?.data?.data?.remaining} />
+            <PreAddedGuests
+              maxNumberCanInvitee={orderInforamtion?.data?.data?.remaining}
+            />
           </Grid>
         )}
       </Grid>
-      
     </Box>
   );
 };

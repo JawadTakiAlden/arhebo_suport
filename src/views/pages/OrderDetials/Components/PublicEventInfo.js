@@ -1,11 +1,10 @@
 import React from "react";
-import { useTranslation } from 'react-i18next';
-import { Box, IconButton, Tooltip, Typography } from "@mui/material";
-import { EastOutlined, ImageOutlined } from "@mui/icons-material";
-import pinkImage from "../../../../assets/download (1).jpeg";
+import { Trans, useTranslation } from "react-i18next";
+import { Box, Button, Typography } from "@mui/material";
+import { LooksOutlined } from "@mui/icons-material";
 
 const PublicEventInfo = ({ data }) => {
-  const { t ,  i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Box
@@ -14,10 +13,11 @@ const PublicEventInfo = ({ data }) => {
         transition: "0.3s",
         backdropFilter: "blur(10px)",
         height: "100%",
-        backgroundImage: (theme) => `linear-gradient(90deg , ${theme.palette.success.light} , ${theme.palette.success.dark})`,
+        backgroundImage: (theme) =>
+          `linear-gradient(90deg , ${theme.palette.success.light} , ${theme.palette.success.dark})`,
         position: "relative",
         overflow: "hidden",
-        color: 'white',
+        color: "white",
         "& *": {
           color: "inherit",
         },
@@ -29,22 +29,24 @@ const PublicEventInfo = ({ data }) => {
           p: 2,
           width: "100%",
           height: "100%",
+     
         }}
       >
-        <Tooltip title={t('publicEventInfo.openImageTooltip')}>
-          <IconButton
-            sx={{
-              position: "absolute",
-              right: "10px",
-              top: "10px",
-            }}
-            component={"a"}
-            href={data?.template}
-            target="_blank"
-          >
-            <ImageOutlined />
-          </IconButton>
-        </Tooltip>
+        <Box
+          sx={{
+            position: "absolute",
+            right: "0",
+            top: "0",
+            backgroundColor : 'common.white',
+            p : 2,
+            borderRadius: "0 0 0 20px",
+          }}
+        >
+          <Button sx={{
+            color : 'success.main',
+            // fontWeight : '700'
+          }} component={'a'} href={data?.template} target="_blank" endIcon={<LooksOutlined />} variant="outlined" color="success"><Trans i18nKey={"publicEventInfo.openImageTooltip"}></Trans></Button>
+        </Box>
         <Typography
           sx={{
             position: "relative",
@@ -72,7 +74,7 @@ const PublicEventInfo = ({ data }) => {
             },
           }}
         >
-          {t('publicEventInfo.title')}
+          {t("publicEventInfo.title")}
         </Typography>
         <Box
           sx={{
@@ -86,27 +88,33 @@ const PublicEventInfo = ({ data }) => {
               width: { xs: "100%", sm: "70%" },
             }}
           >
-            <Typography sx={{ mb: 1 }}>
-              {t('publicEventInfo.inviter')}: {data?.inviter}
+            <Typography sx={{ mb: 1, fontWeight: "700" }}>
+              {t("publicEventInfo.inviter")}: {data?.inviter}
             </Typography>
-            <Typography sx={{ mb: 1 }}>
-              {t('publicEventInfo.city')}: {data?.city || t('publicEventInfo.notFound')}
+            <Typography sx={{ mb: 1, fontWeight: "700" }}>
+              {t("publicEventInfo.city")}:{" "}
+              {data?.city || t("publicEventInfo.notFound")}
             </Typography>
-            <Typography sx={{ mb: 1 }}>
-              {t('publicEventInfo.location')}:
+            <Typography sx={{ mb: 1, fontWeight: "700" }}>
+              {t("publicEventInfo.region")}:{" "}
+              {data?.region || t("publicEventInfo.notFound")}
+            </Typography>
+            <Typography sx={{ mb: 1, fontWeight: "700" }}>
+              {t("publicEventInfo.detailed_location")}:{" "}
+              {data?.location_name || t("publicEventInfo.notFound")}
+            </Typography>
+            <Typography sx={{ mb: 1, fontWeight: "700" }}>
+              {t("publicEventInfo.location")}:
               <a
                 style={{ display: "inline-block", textDecoration: "underline" }}
                 href={data?.location_link}
               >
-                {t('publicEventInfo.openLink')}
+                {t("publicEventInfo.openLink")}
               </a>
             </Typography>
-            <Typography sx={{ mb: 1 }}>
-              {t('publicEventInfo.region')}: {data?.region || t('publicEventInfo.notFound')}
-            </Typography>
             {data?.invitationInput?.map((obj, index) => (
-              <Typography key={index} sx={{ mb: 1 }}>
-                {i18n.language === 'ar' ? obj.name_ar : obj.name} : {obj?.value}
+              <Typography key={index} sx={{ mb: 1, fontWeight: "700" }}>
+                {i18n.language === "ar" ? obj.name_ar : obj.name} : {obj?.value}
               </Typography>
             ))}
           </Box>
@@ -115,14 +123,16 @@ const PublicEventInfo = ({ data }) => {
               width: { xs: "100%", sm: "30%" },
             }}
           >
-            <Typography sx={{ mb: 1 }}>
-              {t('publicEventInfo.islamicDate')}: {data?.hijri_date}
+            <Typography sx={{ mb: 1, fontWeight: "700" }}>
+              {t("publicEventInfo.islamicDate")}: {data?.hijri_date}
             </Typography>
-            <Typography sx={{ mb: 1 }}>
-              {t('publicEventInfo.gregorianDate')}: {data?.miladi_date}
+            <Typography sx={{ mb: 1, fontWeight: "700" }}>
+              {t("publicEventInfo.gregorianDate")}: {data?.miladi_date}
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              {data?.from} &nbsp;&nbsp;&nbsp; <EastOutlined /> &nbsp;&nbsp;&nbsp; {data?.to}
+            <Box
+              sx={{ display: "flex", alignItems: "center", fontWeight: "700" }}
+            >
+              {t("from")} {data?.from} {t("to")} {data?.to}
             </Box>
           </Box>
         </Box>

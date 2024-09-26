@@ -1,15 +1,6 @@
-import { CameraOutlined, SaveOutlined } from "@mui/icons-material";
+import { ArrowUpward, CameraOutlined, SaveOutlined } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  Tooltip,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Box, Button, Tooltip, Typography, styled } from "@mui/material";
 import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 import useAddImageAndMessageOfInvitasion from "../../../../api/useAddImageAndMessageOfInvitasion";
@@ -32,7 +23,6 @@ const InvitationImage = ({ data }) => {
   const { t } = useTranslation();
   const [file, setFile] = useState({
     image: "",
-    message: data?.textMessage,
     invitation_id: data?.id,
   });
   const [isDragging, setIsDragging] = useState(false);
@@ -85,17 +75,29 @@ const InvitationImage = ({ data }) => {
   return (
     <Box
       sx={{
-        boxShadow: "1px 1px 10px -5px rgba(0,0,0,0.2)",
+        boxShadow: "1px 1px 10px -5px rgba(0,0,0,0.4)",
         p: 2,
-        borderRadius: "4px",
+        borderRadius: "25px",
         transition: "0.3s",
         height: "100%",
         "&:hover": {
-          transform: "scale(1.02)",
+          transform: "scale(1.005)",
           boxShadow: "-1px -1px 15px -5px rgba(0,0,0,0.5)",
         },
       }}
     >
+      {!data?.image && (
+        <Typography
+          color={"error.light"}
+          sx={{
+            fontWeight: "600",
+            mb: 2,
+            fontSize: "20px",
+          }}
+        >
+          {t("suuport_guest_note")}{" "}
+        </Typography>
+      )}
       <Typography
         sx={{
           position: "relative",
@@ -209,7 +211,7 @@ const InvitationImage = ({ data }) => {
           </Tooltip>
         )}
       </Box>
-      <FormControl color="success" fullWidth sx={{ mb: 2, mt: 2 }}>
+      {/* <FormControl color="success" fullWidth sx={{ mb: 2, mt: 2 }}>
         <InputLabel>{t("invitationImage.message")}</InputLabel>
         <OutlinedInput
           label={t("invitationImage.message")}
@@ -223,19 +225,34 @@ const InvitationImage = ({ data }) => {
             setFile({ ...file, message: e.target.value });
           }}
         />
-      </FormControl>
-      <LoadingButton
-        variant="outlined"
-        color="success"
-        onClick={() => {
-          storeFile.mutate(file);
+      </FormControl> */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
         }}
-        loading={storeFile.isPending}
-        startIcon={<SaveOutlined />}
-        loadingPosition="start"
       >
-        {t("invitationImage.save")}
-      </LoadingButton>
+        <ArrowUpward color="error" />
+        <LoadingButton
+          variant="contained"
+          color="success"
+          sx={{
+            // mt: 2,
+            width: "150px",
+          }}
+          onClick={async () => {
+            await storeFile.mutate(file);
+            setFile((prev) => ({ ...prev, image: "" }));
+          }}
+          loading={storeFile.isPending}
+          startIcon={<SaveOutlined />}
+          loadingPosition="start"
+        >
+          {t("invitationImage.save")}
+        </LoadingButton>
+      </Box>
     </Box>
   );
 };
