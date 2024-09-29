@@ -245,6 +245,7 @@ const InvitationImage = ({ data }) => {
           onClick={async () => {
             await storeFile.mutate(file);
             setFile((prev) => ({ ...prev, image: "" }));
+            // console.log(file)
           }}
           loading={storeFile.isPending}
           startIcon={<SaveOutlined />}
