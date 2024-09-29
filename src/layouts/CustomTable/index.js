@@ -99,7 +99,7 @@ const CustomTable = () => {
           { value: "1", label: "Active" },
           { value: "2", label: "Done" },
           { value: "3", label: "Deleted" },
-          { value: "4", label: "Updated" },
+          { value: "5", label: "Updated" },
         ],
         Cell: ({ row }) =>
           +row.original.status === 1 ? (

@@ -26,10 +26,13 @@ import * as yup from "yup";
 import useGetNickName from "../../../../../api/useGetNickName";
 import useGgetGusests from "../../../../../api/useGgetGusests";
 import useShowOrder from "../../../../../api/useShowOrder";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const RenderGuestInputs = () => {
   const gustes = useSelector((state) => state.guests);
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
   const orderDetails = useShowOrder();
   const [remaining, setRemaining] = useState(
     orderDetails?.data?.data?.remaining
@@ -40,10 +43,12 @@ const RenderGuestInputs = () => {
   const addNewGuest = (values) => {
     dispatch(Add_Guest(values));
   };
+  useEffect(() => {
+    setRemaining(orderDetails?.data?.data?.remaining);
+  }, [orderDetails.isSuccess]);
   if (orderDetails.isLoading) {
     return <Typography>Loading ...</Typography>;
   }
-  console.log(orderDetails?.data?.data);
   return (
     <>
       <Box
@@ -72,7 +77,7 @@ const RenderGuestInputs = () => {
             }}
           />
           <Box>
-            <Typography>You Can Add</Typography>
+            <Typography>{t("add_guests.add_new")}</Typography>
             <Typography>{remaining}</Typography>
           </Box>
         </Box>
@@ -93,7 +98,7 @@ const RenderGuestInputs = () => {
             }}
           />
           <Box>
-            <Typography>You are invitee</Typography>
+            <Typography>{t("add_guests.already")}</Typography>
             <Typography>{orderDetails?.data?.data?.invited}</Typography>
           </Box>
         </Box>
@@ -205,8 +210,16 @@ const RenderGuestInputs = () => {
                   >
                     {nicknames?.data?.data?.map((name) => {
                       return (
-                        <MenuItem value={name.nickname}>
-                          {name.nickname}
+                        <MenuItem
+                          value={
+                            i18n.language === "en"
+                              ? name.nickname
+                              : name.nickname_ar
+                          }
+                        >
+                          {i18n.language === "en"
+                            ? name.nickname
+                            : name.nickname_ar}
                         </MenuItem>
                       );
                     })}

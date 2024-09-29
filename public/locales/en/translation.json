@@ -28,7 +28,7 @@
     "active": "Active",
     "done": "Done",
     "deleted": "Deleted",
-    "updated": "Updated",
+    "updated": "Pending",
     "add_guests": "Add Guests",
     "error_loading_data": "Error loading data"
   },
@@ -117,5 +117,9 @@
   "cta": "CTA",
   "suuport_guest_note": "To proceed with adding guests, please upload the template image after completing the design for this event.",
   "from": "From",
-  "to": "To"
+  "to": "To",
+  "add_guests": {
+    "add_new" : "You Can Add",
+    "already" : "Already invited"
+  }
 }

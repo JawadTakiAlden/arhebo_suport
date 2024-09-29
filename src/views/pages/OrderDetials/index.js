@@ -156,9 +156,9 @@ const OrderDetials = () => {
         <Grid item xs={12}>
           <PublicEventInfo data={orderInforamtion?.data?.data} />
         </Grid>
-          <Grid item xs={12}>
-            <InvitationImage data={orderInforamtion?.data?.data} />
-          </Grid>
+        <Grid item xs={12}>
+          <InvitationImage data={orderInforamtion?.data?.data} />
+        </Grid>
         {/* )} */}
         <Grid item xs={12} sm={6} md={9}>
           <PackageDetails data={orderInforamtion?.data?.data} />
@@ -199,7 +199,7 @@ const OrderDetials = () => {
             </Button>
           </Grid>
         )}
-        {withCustom && (
+        {withoutNumber && (
           <Grid item xs={12}>
             <PreAddedGuests
               maxNumberCanInvitee={orderInforamtion?.data?.data?.remaining}
