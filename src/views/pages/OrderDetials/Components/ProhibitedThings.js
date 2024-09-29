@@ -51,6 +51,7 @@ const ProhibitedThings = ({ data }) => {
       >
         {t('prohibitedThings.title')}
       </Typography>
+      {data?.prohibitedThings.length === 0 && <Typography>{t('prohibitedThings.noForbiden')}</Typography>}
       {data?.prohibitedThings.map((forbiddenThing, i) => (
         <Typography
           key={i}

@@ -48,7 +48,7 @@
     "location": "Location",
     "openLink": "Open Link",
     "region": "City",
-    "detailed_location" : "Location Details",
+    "detailed_location": "Location Details",
     "islamicDate": "Islamic Date",
     "gregorianDate": "Gregorian Date",
     "notFound": "Not Found",
@@ -95,7 +95,8 @@
     "noMessages": "No Messages Sent Yet"
   },
   "prohibitedThings": {
-    "title": "Forbidden things"
+    "title": "Forbidden things",
+    "noForbiden": "There are no prohibited items in this invitation"
   },
   "invitationImage": {
     "allowedFiles": "Only JPEG , JPG , PNG files are allowed.",
@@ -113,8 +114,8 @@
     "templateNumber": "Template Number",
     "check": "Check"
   },
-  "cta" : "CTA",
-  "suuport_guest_note" : "To proceed with adding guests, please upload the template image after completing the design for this event.",
-  "from" : "From",
-  "to" : "To"
+  "cta": "CTA",
+  "suuport_guest_note": "To proceed with adding guests, please upload the template image after completing the design for this event.",
+  "from": "From",
+  "to": "To"
 }

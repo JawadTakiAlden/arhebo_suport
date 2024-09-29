@@ -81,7 +81,7 @@
     "noInvites": "لا توجد دعوات بعد"
   },
   "additionalPackageInfo": {
-    "packageTitle": "حزمة إضافية",
+    "packageTitle": "حزمة مدعوين إضافيين",
     "noAdditionalPackage": "لم يتم دفع أي حزمة إضافية",
     "invitees": "دعوات إضافية"
   },
@@ -95,7 +95,8 @@
     "noMessages": "لم يتم إرسال أي رسائل بعد"
   },
   "prohibitedThings": {
-    "title": "الأشياء المحظورة"
+    "title": "الأشياء المحظورة",
+    "noForbiden" : "لا يوجد اشباء ممنوعة في هذه الدعوة"
   },
   "invitationImage": {
     "allowedFiles": "الملفات المسموح بها فقط: JPEG، JPG، PNG.",

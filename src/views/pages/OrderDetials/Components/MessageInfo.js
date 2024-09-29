@@ -51,6 +51,7 @@ const MessageInfo = ({ data }) => {
         {t('messageInfo.messages')}
       </Typography>
       {data?.message.length === 0 && <Typography>{t('messageInfo.noMessages')}</Typography>}
+      
       {data?.message.map((message, i) => (
         <Typography
           key={i}
