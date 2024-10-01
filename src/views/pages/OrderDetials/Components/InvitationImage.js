@@ -5,6 +5,7 @@ import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 import useAddImageAndMessageOfInvitasion from "../../../../api/useAddImageAndMessageOfInvitasion";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -27,6 +28,8 @@ const InvitationImage = ({ data }) => {
   });
   const [isDragging, setIsDragging] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
+
+
   const handleDrop = (event) => {
     event.preventDefault();
     setIsDragging(false);
@@ -129,7 +132,7 @@ const InvitationImage = ({ data }) => {
       >
         {t("invitationImage.title")}
       </Typography>{" "}
-      {data?.image && (
+      {/* {data?.image && (
         <Typography
           component={"a"}
           href={data?.image}
@@ -148,7 +151,7 @@ const InvitationImage = ({ data }) => {
         >
           {t("invitationImage.currentImage")}
         </Typography>
-      )}
+      )} */}
       <Box
         sx={{
           p: 2,
@@ -194,21 +197,22 @@ const InvitationImage = ({ data }) => {
             type="file"
           />
         </Button>
-        {file.image && (
-          <Tooltip title={t("invitationImage.clickMeHint")}>
-            <Typography
-              sx={{
-                my: 2,
-                textAlign: "center",
-                color: "success.dark",
+        {(file?.image || data?.image) && !storeFile.isPending && (
+          <Box
+            sx={{
+              width: "300px",
+              mt: 2,
+            }}
+          >
+            <img
+              src={file.image ? URL.createObjectURL(file.image) : data?.image}
+              style={{
+                objectFit: "scale-down",
+                maxWidth: "100%",
+                borderRadius: "20px",
               }}
-              component={"a"}
-              target="_blank"
-              href={URL.createObjectURL(file.image)}
-            >
-              {file?.image?.name}
-            </Typography>
-          </Tooltip>
+            />
+          </Box>
         )}
       </Box>
       {/* <FormControl color="success" fullWidth sx={{ mb: 2, mt: 2 }}>

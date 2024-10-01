@@ -108,6 +108,7 @@
     "message": "Message",
     "save": "Save"
   },
+  "template_code" : "Template Code",
   "checkTemplate": {
     "templateSearchPrompt": "Enter the 6-digit code in the field below and click 'Check' to find the template in the Ar7ebo system.",
     "templateSearchResult": "Simply enter the unique 6-digit code to search for the template, and you'll see the result instantly.",

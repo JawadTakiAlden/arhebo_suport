@@ -74,7 +74,7 @@ const PublicEventInfo = ({ data }) => {
             },
           }}
         >
-          {t("publicEventInfo.title")}
+          {t("publicEventInfo.title")} - (  {t('template_code')} {data?.template.slice(-12,-5)} )
         </Typography>
         <Box
           sx={{
