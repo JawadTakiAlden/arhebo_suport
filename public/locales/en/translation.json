@@ -122,5 +122,9 @@
   "add_guests": {
     "add_new" : "You Can Add",
     "already" : "Already invited"
-  }
+  },
+  "faild" : "invitations were not sent",
+  "success" : "invitations sent successfully",
+  "number_of_faild" : "Numbers of users who were not successfully sent invitations because they do not have WhatsApp",
+  "copy_all_faild" : "Copy the numbers to which invitations failed to be sent"
 }

@@ -25,6 +25,9 @@ function App() {
         default: "#F4F4F4",
       },
     },
+    typography : {
+      fontFamily : `"Cairo", "Poppins" , sans-serif`
+    }
   });
   return i18n.language === "en" ? (
     <ThemeProvider theme={theme}>

@@ -41,9 +41,8 @@ const Header = () => {
         <LanguageSwitcher />
         <Button
           onClick={() => {
-            navigate("/");
             localStorage.removeItem("arhebo-token");
-            localStorage.removeItem("arhebo-admin-profile");
+            navigate("/");
           }}
           color="error"
           variant="contained"
