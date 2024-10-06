@@ -183,21 +183,30 @@ const OrderDetials = () => {
         </Grid>
 
         {withoutNumber && orderInforamtion?.data?.data?.image && (
-          <Grid item xs={12}>
-            <Button
-              startIcon={<Add />}
-              onClick={() =>
-                navigate(
-                  `/dashboard/orders/add-guests/${orderInforamtion?.data?.data?.id}`
-                )
-              }
-              color="success"
-              variant="contained"
-              size="medium"
-            >
-              {t("CustomTable.add_guests")}
-            </Button>
-          </Grid>
+          <Button
+            startIcon={<Add sx={{
+              fontSize : '50px !important'
+            }} />}
+            onClick={() =>
+              navigate(
+                `/dashboard/orders/add-guests/${orderInforamtion?.data?.data?.id}`
+              )
+            }
+            color="success"
+            variant="contained"
+            size="medium"
+            sx={{
+              position: "fixed",
+              bottom: "30px",
+              right: "30px",
+              height : '60px',
+              borderRadius: '30px',
+              fontSize : '25px',
+              boxShadow : '1px 1px 15px -1px #000'
+            }}
+          >
+            {t("CustomTable.add_guests")}
+          </Button>
         )}
         {withoutNumber && (
           <Grid item xs={12}>
